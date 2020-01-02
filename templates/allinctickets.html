@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    List of all INC Tickets
+{% endblock %}
+
+{% block body %}
+    <h1>List of all INC Tickets</h1>
+    <h2>Open Tickets</h2>
+    <ul>
+        {% for ticket in opentickets %}
+            <li>
+              <a href="{{ url_for('ticket', ticket_id=ticket.id) }}">
+                    Ticket ID: {{ ticket.id }} - {{ ticket.description }}  - {{ticket.status }}
+              </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Closed Tickets</h2>
+    <ul>
+        {% for ticket in closedtickets %}
+            <li>
+              <a href="{{ url_for('ticket', ticket_id=ticket.id) }}">
+                    Ticket ID: {{ ticket.id }} - {{ ticket.description }}  - {{ticket.status }}
+              </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

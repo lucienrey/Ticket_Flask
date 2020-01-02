@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Ticket Info
+{% endblock %}
+
+{% block body %}
+    <h1>Ticket ID: {{ ticket.id }}</h1>
+
+    <ul>
+        <li>Status: {{ ticket.status }}</li>
+        <li>Version: {{ ticket.version }}</li>
+        <li>Description: {{ ticket.description}}</li>
+        <li>User Name: {{ ticket.name}}</li>
+        <li>User TNumber: {{ ticket.tnumber}}</li>
+    </ul>
+
+{% endblock %}

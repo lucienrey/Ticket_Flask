@@ -9,10 +9,14 @@ app = Flask(__name__)
 engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(bind=engine))
 
-@app.route("/")
+@app.route('/')
 def index():
+    return render_template('home.html')
+
+@app.route("/createticket")
+def createticket():
     ubsuser = db.execute("SELECT * FROM ubsuser").fetchall()
-    return render_template("index.html", ubsuser=ubsuser)
+    return render_template("createticket.html", ubsuser=ubsuser)
 
 @app.route("/newticket", methods=["POST"])
 def newticket():
@@ -46,3 +50,7 @@ def ticket(ticket_id):
     if ticket_id is None:
         return render_template("error.html", message="No such Inc Tickets.")
     return render_template("ticket.html", ticket=ticket)
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
